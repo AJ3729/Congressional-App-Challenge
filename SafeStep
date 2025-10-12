@@ -1,5 +1,10 @@
 David's Idea
-REMEMBER GUYS, THIS APP CAN BE 99% DONE WITH PYTHON!!!!
+This is a mobile app
+the backend is done with python
+the UI and sensors are done by Dart( easy to learn, similar to python, and Javascript)
+Flutter(which is in dart), sends health info to python servers via REST Api in JSON format
+YAML for the Flutter packages
+YAML is extreamly simple. it is literaly just listing the version of the package(you can learn it in like 2 minutes)
 App for caregivers. Some apps exist, but they are expensive and hard to use. This app would give you push notifications for reminders, fall notifications to family members if the person falls, connection to health wearables, and 
 checking if a medicine tha thte user is taking is recalled. 
 
