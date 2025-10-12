@@ -1,0 +1,68 @@
+David's Idea
+App for caregivers. Some apps exist, but they are expensive and hard to use. This app would give you push notifications for reminders, fall notifications to family members if the person falls, connection to health wearables, and 
+checking if a medicine tha thte user is taking is recalled. 
+
+Here are some API's we would use:
+I was going to use google fit and healthkit for apis, becuase it would need to be different for different devices. but flutter does cross platform data analytics, and supports python. 
+
+Flutter for HealthKit and Health Connect:
+  Use health package (https://pub.dev/packages/health, free) to access HealthKit (iOS) and Health Connect (Android) for health data 
+  Handles platform differences
+  Free for development/testing
+  Test on Xcode simulators (iOS) or Android Studio emulators (free).
+  Send data to Python server ( whats cool is that flutter can accses the gyroscopes in the phones to tell wheather someone fell)
+Metriport API:
+  Open-source health data API.
+  Connects EHRs, wearables, networks like CommonWell.
+  Free tier just download on ours; Python SDK available.
+   https://docs.metriport.com/medical-api/getting-started/quickstart
+OpenFDA API:
+  Public FDA API for drug, device, food data.
+  could be used for adverse events, recalls, labels, NDC.
+  Free with raw data downloads.
+  Python access via requests (JSON-based).
+  https://open.fda.gov/apis/
+Twilio API:
+  Cloud platform for SMS, voice, video, email, WhatsApp(notifications for when person falls)
+  Used for notifications, automated calls.
+  Free trial credits 
+  Python SDK available.
+  https://www.twilio.com/docs/usage/api
+OneSignal API:
+  Omnichannel platform for push, in-app, SMS, email.
+  Free tier with unlimited API calls.
+  Supports automation for apps and websites.
+  there is python sdk
+  https://documentation.onesignal.com/reference/rest-api-overview
+Google Calendar API:
+  RESTful API for calendars, events, access rules.
+  Free. there are 2 types of quotas. one is per minute per project, and the other is per minute per project per user
+  Python SDK: google-api-python-client.
+  https://developers.google.com/calendar/api/guides/overview
+Firebase:
+  can be used for authentication, Firestore database, storage, hosting.
+  Free for small-scale apps
+  Python sdk available  Supports real-time data sync.
+  https://firebase.google.com/docs/admin/setup#python
+
+
+work division:
+person 1) 
+  do UI and intigrate health package to get accses to health data
+
+person 2,more experience(so ammaar)) 
+  more experience, so will handle python backend(server)
+  intergrate metriport(this will be self hosted, so will be non server. will use flask[ i know what the fuck it is nikhil])
+  intergrate firebase(which will be the data collection and authentication)
+  intergrate openFDA
+
+Person 3) notifications
+  intigrate twilo for sms
+  onesignal for push
+  alert logic in backend(like if the phone falls at more than 9.8 meters per second, send automated sms or somehting like that)
+
+Person 4)
+  intergrate google calendar
+  in charge of testing 
+ also helps intigrate health package to get accses to health data
+
