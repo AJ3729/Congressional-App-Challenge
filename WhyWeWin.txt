@@ -87,7 +87,3 @@
 | **Feasibility**          | Buildable with common tools (GPT API, React, Firebase) |
 | **Education**            | Teaches legal rights & plain-English law               |
 | **Presentation**         | Powerful social story and clean UI potential           |
-
----
-
-Would you like me to write a **2-minute competition pitch script** (like what you’d say in a video submission or to judges) based on this idea? It’ll make your entry sound polished and personal.
