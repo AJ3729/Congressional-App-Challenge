@@ -7,4 +7,5 @@ def read_json(filename):
     for question, answer in data.items():
         print(f"Q: {question}")
         print(f"A: {answer}\n")
-read_json("../tenant_right.json")
+read_json("../data/tenant_right.json")
+
