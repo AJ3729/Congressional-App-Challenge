@@ -1,0 +1,10 @@
+.home {
+  margin-left: 200px; /* space for the sidebar */
+  padding: 40px;
+  background-color: #f4f4f4;
+  min-height: 100vh;
+}
+
+.home h1 {
+  margin-bottom: 20px;
+}
