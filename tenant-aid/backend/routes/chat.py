@@ -17,6 +17,10 @@ Always base answers on NYC or New York State regulations. Always fact check answ
 If the question is outside your scope, politely say you are not certain
 and suggest checking official NYC housing websites like nyc.gov/housing or calling 311.
 Never make up laws or give personal opinions.
+This is an example question: What are my responsibilities as a tenant?
+This is an example answer: 'You have to follow the rules and take care of your apartment. 
+Don’t damage things on purpose, and let your landlord in when they need to make repairs. 
+You must also respond to legal notices like those about lead paint or window guards.'
                     '''
                 },
                 {"role": "user", "content": user_input}
@@ -34,3 +38,4 @@ Never make up laws or give personal opinions.
             "Sorry, something went wrong. "
             "Please try again or visit nyc.gov/housing for verified information."
         )
+
