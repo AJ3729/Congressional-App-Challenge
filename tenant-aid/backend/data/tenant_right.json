@@ -28,4 +28,47 @@
   "Can a building owner discriminate against me?": "No. It’s illegal for landlords to deny you housing because of your race, gender, religion, disability, family status, or income source. Everyone must be treated equally.",
   
   "Can I have pets in my apartment?": "It depends on your lease. If your landlord doesn’t allow pets and you keep one, they can evict you. Service animals are allowed, and some pets are illegal in NYC. Call 311 for pet rules."
+
+  "How do I apply for NYCHA Public Housing?": "Apply online at selfserve.nycha.info from any device. If you don’t have internet, visit a NYCHA Walk-in Center to use a kiosk. For help, call (718) 707-7771, Monday–Friday, 8 a.m.–5 p.m.",
+  
+  "Do I need to submit documents with the NYCHA Public Housing application?": "No, you don’t need to submit documents when you apply. NYCHA will check your info later during the Eligibility Interview. If you apply as a Victim of Domestic Violence, send your application first, then fill out the VDV form on selfserve.nycha.info or call (718) 707-7771.",
+  
+  "How do I know if NYCHA got my application?": "Check your application status at selfserve.nycha.info. NYCHA will also mail you a letter within 30 days. If you don’t get it, call (718) 707-7771.",
+  
+  "How can I check the status of my application?": "You can check it anytime at selfserve.nycha.info.",
+  
+  "Should I update my NYCHA application if something changes?": "Yes, update any changes like address, phone, income, or borough preference at selfserve.nycha.info.",
+  
+  "Do I need to renew my application?": "Yes, renew it every two years at selfserve.nycha.info under 'Update/Renew My Case' to stay on the waitlist.",
+  
+  "Can I apply for both Public Housing and Section 8?": "Yes, you can apply for both, but you can only receive one at a time. If you’re selected for one, your priority on the other waitlist will go down.",
+  
+  "Do I have to live in NYC to apply for Public Housing?": "No, but people who live or work in NYC get priority on the waitlist.",
+  
+  "Do I have to be a U.S. citizen to apply for Public Housing?": "No, but at least one person in your household must be a U.S. citizen or have eligible immigration status like a Permanent Resident or Refugee.",
+  
+  "Is there a minimum age to apply for public housing?": "Yes, you or your co-head must be at least 18 or legally emancipated.",
+  
+  "Can I apply for Public Housing as a single person?": "Yes, single adults can apply.",
+  
+  "How old do I need to be to live in a NYCHA senior development?": "You or your co-head must be at least 62, and all household members must also be 62 or older.",
+  
+  "Can I pick a specific development on my NYCHA application?": "No, you can only choose up to two boroughs. NYCHA will assign a development based on your priority and apartment size.",
+  
+  "Do I need income to apply for Public Housing?": "No, there’s no minimum income required.",
+  
+  "Is there a maximum income for Public Housing?": "Yes, there are income limits based on family size. You can see them on NYCHA’s website.",
+  
+  "What happens after I apply for Public Housing?": "You’ll stay on the waitlist until chosen for an Eligibility Interview. The wait depends on your priority, family size, and available apartments.",
+  
+  "If selected, how is my rent calculated?": "Your rent is about 30% of your household’s yearly income, minus certain deductions.",
+  
+  "What happens after I’m placed on a Certified Waitlist?": "If found eligible, NYCHA will notify you by mail. They’ll run a background check on everyone 16 or older. If you pass, you’ll get an apartment offer. If not, you’ll receive a letter explaining next steps.",
+  
+  "Does NYCHA have apartments for people with disabilities?": "Yes, NYCHA has accessible apartments for people with physical or medical needs.",
+  
+  "Who is eligible for Public Housing?": "You qualify if you meet NYCHA’s family definition, have at least one household member with legal status, are 18 or older, and meet income limits.",
+  
+  "What are the income limits for Public Housing?": "Income limits depend on family size. For example: 1 person: $90,750, 2 people: $103,700, 3: $116,650, 4: $129,600, and it increases by about $10,000 per person."
 }
+
