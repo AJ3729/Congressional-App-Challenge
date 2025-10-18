@@ -11,4 +11,4 @@ function Message({ sender, text }) {
   );
 }
 
-export default ChatMessage;
+export default Message;
