@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar";
 import Home from "./pages/Home";
 import Chat from "./pages/Chat";
 import Resources from "./pages/Resources";
+import Form from "./pages/Form";
 import "./css/App.css";
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
         setActivePage("chat");
       } else if (hash === "#resources") {
         setActivePage("resources");
+      } else if (hash === "#form") {
+          setActivePage("form");
       } else {
         setActivePage("home"); // default page
       }
@@ -35,6 +38,7 @@ function App() {
       {activePage === "home" && <Home />}
       {activePage === "chat" && <Chat />}
       {activePage === "resources" && <Resources />}
+      {activePage === "form" && <Form />}
     </div>
   );
 }
