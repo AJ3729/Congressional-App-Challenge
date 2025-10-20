@@ -5,7 +5,7 @@
   margin: 0; /* Remove the margin */
   display: flex;
   flex-direction: column;
-  background-color: #fafafa;
+  background-color: #000000;
   border-radius: 8px;
   overflow: hidden;
   font-family: Arial, sans-serif;
@@ -16,7 +16,7 @@
   flex: 1; /* Makes the window fill the available space */
   padding: 16px;
   overflow-y: auto;
-  background-color: white;
+  background-color: rgb(0, 0, 0);
 }
 
 /* Styling for individual messages */
@@ -32,7 +32,7 @@
 
 .message.user {
   margin-left: auto;
-  background-color: #007bff;
+  background-color: #474747;
   color: white;
   border-bottom-right-radius: 4px;
 }
@@ -49,7 +49,7 @@
   display: flex;
   padding: 10px 12px;
   border-top: 1px solid #ccc;
-  background-color: #f9f9f9;
+  background-color: #000000;
   align-items: center;
 }
 
@@ -57,20 +57,20 @@
   flex: 1; /* Allow the input field to take all remaining space */
   padding: 10px 14px;
   font-size: 14px;
-  border: 1px solid #ccc;
+  border: 1px solid #474747;
   border-radius: 20px;
   outline: none;
   transition: border-color 0.3s ease;
 }
 
 .chat-input-area input:focus {
-  border-color: #007bff;
+  border-color: #474747;
 }
 
 .chat-input-area button {
   margin-left: 12px;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #474747;
   border: none;
   color: white;
   font-weight: bold;
