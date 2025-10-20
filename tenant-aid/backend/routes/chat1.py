@@ -94,4 +94,4 @@ If you're not certain about a law, politely say so and suggest checking official
         return (
             "Sorry, something went wrong. "
             "Please try again or visit nyc.gov/housing for verified information."
-        )
+)        
