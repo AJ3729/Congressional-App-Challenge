@@ -3,7 +3,14 @@ import os
 
 def validate_email(email):
     # simple check: must have "@" and "."
-    return "@" in email and "." in email and len(email) > 5
+    has_at = "@" in email
+    has_dot = "." in email
+    long_enough = len(email) > 5
+
+    if has_at and has_dot and long_enough:
+        return True
+    else:
+        return False
 
 def validate_message(message):
     # message can't be empty or just spaces
