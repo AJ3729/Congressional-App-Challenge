@@ -17,4 +17,4 @@ jobs:
       - name: Install dependencies
         run: pip install openai
       - name: Run script
-        run: python backend/routes/chat.py
+        run: python backend/routes/chat_final.py
