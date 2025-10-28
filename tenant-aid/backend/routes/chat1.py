@@ -1,6 +1,8 @@
 import os
 from openai import OpenAI
 import re
+#from dotenv import load_dotenv
+#load_dotenv()
 
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
@@ -95,3 +97,12 @@ If you're not certain about a law, politely say so and suggest checking official
             "Sorry, something went wrong. "
             "Please try again or visit nyc.gov/housing for verified information."
 )        
+#if __name__ == "__main__":
+    while True:
+        user_input = input("Ask TenantAid a question (or 'quit' to stop): ")
+        if user_input.lower() == "quit":
+            break
+        answer = generate_ai_answer(user_input)
+        print("TenantAid:", answer)
+
+#print("Chat backend running successfully!")
