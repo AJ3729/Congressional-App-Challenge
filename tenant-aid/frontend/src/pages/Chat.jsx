@@ -11,7 +11,7 @@ function Chat() {
     const fetchMessages = async () => {
       setLoading(true); // start loading
       try {
-        const res = await fetch("WHEREVER-THE-CHAT-IS?" + new Date().getTime());
+        const res = await fetch("WHEREVER-THE-CHAT-IS?" + new Date().getTime()); // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
         const data = await res.json();
         setMessages(data);
       } catch (err) {
@@ -52,13 +52,13 @@ function Chat() {
         {loading ? (
           <div className="spinner" />
         ) : (
-          messages.map(({ id, sender, text }) => (
-            <div
-              key={id}
-              className={`message ${sender === "user" ? "user" : "bot"}`}
-            >
-              {text}
-            </div>
+        messages.map(({ id, sender, text }) => (
+          <div
+            key={id}
+            className={`message ${sender === "user" ? "user" : "bot"}`}
+          >
+            {text}
+          </div>
           ))
         )}
         <div ref={messagesEndRef} />
@@ -66,12 +66,12 @@ function Chat() {
 
       <div className="chat-input-area">
         <input
-          type="text"
-          placeholder="Type your message..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          disabled={loading} // disable input while loading
+        type="text"
+        placeholder="Type your message..."
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        onKeyDown={handleKeyDown}
+        disabled={loading} // disable input while loading
         />
         <button onClick={handleSend} disabled={loading}>
           Send
