@@ -1,8 +1,16 @@
 .home {
   margin-left: 200px; /* space for the sidebar */
+  overflow: hidden;
   padding: 40px;
-  background-color: #f4f4f4;
   min-height: 100vh;
+  height: 100vh; /* full-screen */
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-image: url("../../public/background.jpeg");
+  background-size: cover;       /* fills the screen */
+  background-position: center;  /* centered image */
+  background-repeat: no-repeat;
 }
 
 .home h1 {

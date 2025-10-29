@@ -1,4 +1,5 @@
 .sidebar {
+  float: left;
   position: fixed;
   left: 0;
   top: 0;
@@ -41,4 +42,38 @@
 
 .nav-links li a:hover {
   background-color: #444;
+}
+
+.language-dropdown {
+  margin-top: 10px;
+  padding-left: 0; /* no extra indentation */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* aligns left */
+  gap: 4px;
+}
+
+.language-label {
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.language-select {
+  width: 80%; /* matches the general width of nav links */
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.language-select:hover {
+  border-color: #2a72de;
+}
+
+.language-select:focus {
+  outline: none;
+  border-color: #2a72de;
+  box-shadow: 0 0 3px rgba(42, 114, 222, 0.3);
 }
