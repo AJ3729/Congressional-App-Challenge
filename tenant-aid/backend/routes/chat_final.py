@@ -1,14 +1,22 @@
 import os
 from openai import OpenAI
 import re
-#from dotenv import load_dotenv
+from langdetect import detect, DetectorFactory
+
+#from dotenv import load_dotenv 
 #load_dotenv()
+
+DetectorFactory.seed = 0
 
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
 def generate_ai_answer(user_input):
     text = user_input.lower()
-
+    lang_code = detect(user_input)
+    if lang_code == "es":
+        language = "es"
+    else:
+        language = "en"
     topics = []
     keyword_topics = {
         "rent": "rent",
@@ -64,10 +72,18 @@ def generate_ai_answer(user_input):
     if not topics:
         topics = ["general"]
 
-    # print(f"Matched topics: {topics}")
+    if language == "es":
+        system_prompt = f"""
+Eres TenantAid, un asistente útil sobre derechos de los inquilinos en NYC.
+Explica las leyes de vivienda y los derechos del inquilino claramente en español.
+Siempre basa tus respuestas en las regulaciones de NYC o del Estado de Nueva York.
+Nunca inventes leyes ni opiniones personales.
 
-    # system prompt
-    system_prompt = f"""
+La pregunta del usuario trata sobre los siguientes temas: **{', '.join(topics)}**.
+Si no estás seguro sobre una ley, indica educadamente que se verifique en los sitios oficiales como nyc.gov/housing o llamando al 311.
+        """
+    else:
+        system_prompt = f"""
 You are TenantAid, a helpful NYC tenant rights assistant.
 Explain housing laws and tenant rights clearly and accurately in plain English.
 Always base answers on NYC or New York State regulations.
@@ -75,7 +91,7 @@ Never make up laws or personal opinions.
 
 The user's question is about the following topics: **{', '.join(topics)}**.
 If you're not certain about a law, politely say so and suggest checking official NYC housing websites like nyc.gov/housing or calling 311.
-    """
+        """
 
     try:
         response = client.chat.completions.create(
@@ -105,4 +121,3 @@ If you're not certain about a law, politely say so and suggest checking official
         answer = generate_ai_answer(user_input)
         print("TenantAid:", answer)
 
-#print("Chat backend running successfully!")
