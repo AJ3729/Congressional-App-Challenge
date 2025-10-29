@@ -2,13 +2,19 @@ import os
 from openai import OpenAI
 import re
 from langdetect import detect, DetectorFactory
+from flask import Blueprint, request, jsonify
+from dotenv import load_dotenv 
 
-#from dotenv import load_dotenv 
-#load_dotenv()
-
+load_dotenv()
 DetectorFactory.seed = 0
 
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+
+# Create Flask Blueprint
+chat_bp = Blueprint("chat", __name__)
+
+# Store messages in memory
+messages = []
 
 def generate_ai_answer(user_input):
     text = user_input.lower()
@@ -112,12 +118,42 @@ If you're not certain about a law, politely say so and suggest checking official
         return (
             "Sorry, something went wrong. "
             "Please try again or visit nyc.gov/housing for verified information."
-)        
-#if __name__ == "__main__":
-    while True:
-        user_input = input("Ask TenantAid a question (or 'quit' to stop): ")
-        if user_input.lower() == "quit":
-            break
-        answer = generate_ai_answer(user_input)
-        print("TenantAid:", answer)
+        )
 
+
+# Flask Routes
+@chat_bp.route("/chat", methods=["GET"])
+def get_messages():
+    """Get all chat messages."""
+    return jsonify(messages)
+
+@chat_bp.route("/chat", methods=["POST"])
+def send_message():
+    """Send a message and get AI response."""
+    data = request.get_json()
+    user_message = data.get("text", "")
+    
+    if not user_message:
+        return jsonify({"error": "No message provided"}), 400
+    
+    # Add user message
+    user_msg = {
+        "id": len(messages),
+        "sender": "user",
+        "text": user_message
+    }
+    messages.append(user_msg)
+    
+    # Get AI response
+    ai_response = generate_ai_answer(user_message)
+    bot_msg = {
+        "id": len(messages),
+        "sender": "bot",
+        "text": ai_response
+    }
+    messages.append(bot_msg)
+    
+    return jsonify({"user": user_msg, "bot": bot_msg})
+
+
+# Remove the main block since this is now a Flask route

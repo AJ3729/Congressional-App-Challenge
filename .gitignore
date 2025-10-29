@@ -1,2 +1,42 @@
 tenant-aid/backend/routes/.env
 tenant-aid/.env
+
+# --- Python backend ignores ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+venv/
+.env.*
+*.log
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyo
+*.pyd
+*.db
+
+# Flask / instance folders
+instance/
+.cache/
+
+# --- Node.js frontend ignores ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+build/
+
+# --- Environment & config files ---
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+*.bak
+*.tmp
+
+# --- OS files ---
+Thumbs.db
