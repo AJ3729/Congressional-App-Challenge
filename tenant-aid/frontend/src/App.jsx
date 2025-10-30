@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Sidebar from "./components/Sidebar";
+import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Chat from "./pages/Chat";
 import Resources from "./pages/Resources";
@@ -32,7 +32,7 @@ function App() {
 
   return (
     <div className="App">
-      <Sidebar />
+      <Navbar />
       
       {/* Only render the component if the hash matches */}
       {activePage === "home" && <Home />}

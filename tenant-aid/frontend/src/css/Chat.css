@@ -1,4 +1,5 @@
 .chat {
+  padding-top: 80px;
   background-color: #ccc;
 }
 
@@ -85,40 +86,46 @@
   border-bottom-left-radius: 4px;
 }
 
-/* Chat input area */
 .chat-input-area {
   display: flex;
   padding: 10px 12px;
-  background-color: #ccc;
-  align-items: flex-end;
+  background-color: transparent; /* keep page background */
+  align-items: stretch; /* make children same height */
+  gap: 10px;
 }
 
 .chat-textarea {
   flex: 1;
-  resize: none; /* disable manual resize handle */
-  overflow: hidden; /* hide scrollbar */
+  resize: none;
+  overflow: hidden;
   padding: 12px 18px;
   font-size: 14px;
   outline: none;
   border: none;
   background-color: white;
   border-radius: 25px;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   line-height: 1.4;
-  max-height: 150px; /* optional limit */
-  transition: box-shadow 0.2s ease, height 0.1s ease;
+  max-height: 150px;
+  box-sizing: border-box;
 }
 
 .chat-input-area button {
-  margin-left: 12px;
-  padding: 10px 20px;
+  padding: 0 20px;
   background-color: #474747;
   border: none;
   color: white;
   font-weight: bold;
-  border-radius: 20px;
+  border-radius: 25px; /* match textarea roundness */
   cursor: pointer;
   transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto; /* let flex stretch it */
+}
+
+.chat-input-area button:hover {
+  background-color: #0056b3;
 }
 
 .chat-input-area button:hover {

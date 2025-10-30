@@ -1,18 +1,72 @@
-.home {
-  margin-left: 200px; /* space for the sidebar */
-  overflow: hidden;
-  padding: 40px;
-  min-height: 100vh;
-  height: 100vh; /* full-screen */
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  background-image: url("../../public/background.jpeg");
-  background-size: cover;       /* fills the screen */
-  background-position: center;  /* centered image */
-  background-repeat: no-repeat;
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: sans-serif;      /* optional */
 }
 
-.home h1 {
-  margin-bottom: 20px;
+.home {
+  padding-top: 80px; /* space for navbar */
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Headings and content spacing */
+.home .image {
+  width: 100%;                  /* full page width */
+  height: 50vh;                 /* smaller than full screen height */
+  background-image: url("../../public/background.jpeg");
+  background-size: cover;       /* fill the width while maintaining aspect ratio */
+  background-position: center;  /* center the image */
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: rgb(34, 12, 12);
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;       /* ensures padding doesn't shrink width */
+}
+
+.home .image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3); /* semi-transparent overlay */
+  z-index: 10; /* overlay behind text */
+}
+
+.home div h1 {
+  position: relative; /* must be positioned for z-index to work */
+  z-index: 2; /* above overlay */
+  color: rgb(0, 0, 0); /* ensures text is visible */
+  padding: 20px;
+  font-size: 20;
+}
+
+
+.home h2 {
+  margin: 15px 0;
+}
+
+.home p {
+  margin: 10px 0;
+}
+
+.home ul {
+  margin: 10px 0 20px 20px;
+  padding-left: 0;
+}
+
+.home ul li {
+  margin-bottom: 8px;
 }

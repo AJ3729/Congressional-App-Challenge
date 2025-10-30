@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../css/Form.css';
+import { useTranslation } from "react-i18next";
 
 function Form() {
   const [formData, setFormData] = useState({
@@ -17,10 +18,12 @@ function Form() {
     console.log('Form submitted:', formData); // ammaar you need to work on this later
     setFormData({ email: '', response: '' });
   };
+  
+  const {t,i18n} = useTranslation();
 
   return (
     <form onSubmit={handleSubmit} className="form-container">
-      <label htmlFor="email">Email:</label>
+      <label htmlFor="email">{t("emailInput")}:</label>
       <input
         type="email"
         id="email"
@@ -30,7 +33,7 @@ function Form() {
         required
       />
 
-      <label htmlFor="response">Your Message:</label>
+      <label htmlFor="response">{t("messageInput")}:</label>
       <textarea
         id="response"
         name="response"
@@ -41,7 +44,7 @@ function Form() {
         required
       ></textarea>
 
-      <button type="submit">Submit</button>
+      <button type="submit">{t("submitButton")}</button>
     </form>
   );
 }
