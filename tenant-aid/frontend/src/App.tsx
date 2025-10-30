@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./styles/globals.css";
+import "./globals.css";
 import "./styles/App.css";
 import "./styles/Navbar.css";
 import { Navigation } from "./components/Navigation.tsx";

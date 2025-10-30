@@ -29,3 +29,15 @@ input:focus, select:focus, textarea:focus {
 .button-destructive { background-color: #d4183d; color: #fff; }
 .button-destructive:hover { background-color: #b2102f; }
 .button-destructive:active { background-color: #8c0b24; }
+/* Remove outlines and default borders on all elements */
+* {
+  outline: none;
+  border: none;
+}
+
+/* Optional: make inputs/buttons still usable visually */
+button, input, select, textarea {
+  border: none; /* removes gray borders */
+  outline: none; /* removes focus outline */
+  box-shadow: none; /* removes any shadows */
+}

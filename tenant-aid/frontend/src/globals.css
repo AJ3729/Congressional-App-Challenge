@@ -30,7 +30,7 @@
   --color-destructive-active: #8c0b24;
 
   --color-border: rgba(0, 0, 0, 0.1);
-  --color-input: transparent;
+  --color-input: transparent
   --color-input-background: #f3f3f5;
   --color-switch-background: #cbced4;
   --color-ring: oklch(0.708 0 0);
@@ -65,6 +65,19 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* Remove outlines and default borders on all elements */
+* {
+  outline: none;
+  border: none;
+}
+
+/* Optional: make inputs/buttons still usable visually */
+button, input, select, textarea {
+  border: none; /* removes gray borders */
+  outline: none; /* removes focus outline */
+  box-shadow: none; /* removes any shadows */
 }
 
 /* ========================= DARK MODE ========================= */

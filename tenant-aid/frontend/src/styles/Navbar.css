@@ -23,3 +23,15 @@
 }
 
 .sidebar .primary-item { font-weight: var(--font-weight-medium); }
+/* Remove outlines and default borders on all elements */
+* {
+  outline: none;
+  border: none;
+}
+
+/* Optional: make inputs/buttons still usable visually */
+button, input, select, textarea {
+  border: none; /* removes gray borders */
+  outline: none; /* removes focus outline */
+  box-shadow: none; /* removes any shadows */
+}
