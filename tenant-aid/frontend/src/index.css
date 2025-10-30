@@ -1,4 +1,15 @@
 /*! tailwindcss v4.1.3 | MIT License | https://tailwindcss.com */
+/* src/index.css */
+
+/* Tailwind base styles */
+@tailwind base;
+
+/* Tailwind component classes */
+@tailwind components;
+
+/* Tailwind utility classes */
+@tailwind utilities;
+
 @layer properties {
   @supports (((-webkit-hyphens: none)) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
     *, :before, :after, ::backdrop {

@@ -1,0 +1,20 @@
+/* ========================= RESOURCES PAGE ========================= */
+.resources-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.resource-item {
+  background-color: var(--color-card);
+  color: var(--color-card-foreground);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resource-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}

@@ -2,6 +2,7 @@ import { Shield, MessageSquare, BookOpen, FileText, CheckCircle } from "lucide-r
 import { Button } from "./ui/button.tsx";
 import { Card } from "./ui/card.tsx";
 import { ImageWithFallback } from "./figma/ImageWithFallback.tsx";
+import "../styles/Home.css";
 
 interface HomePageProps {
   onNavigate: (page: string) => void;

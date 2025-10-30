@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./styles/globals.css";
+import "./styles/App.css";
+import "./styles/Navbar.css";
 import { Navigation } from "./components/Navigation.tsx";
 import { HomePage } from "./components/HomePage.tsx";
 import { ChatbotPage } from "./components/ChatbotPage.tsx";

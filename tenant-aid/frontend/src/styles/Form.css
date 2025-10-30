@@ -1,0 +1,31 @@
+/* ========================= FORM STYLES ========================= */
+input, select, textarea {
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-card);
+  color: var(--color-foreground);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--color-ring);
+}
+
+.button {
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.button-primary { background-color: #030213; color: oklch(1 0 0); }
+.button-primary:hover { background-color: #1a1a2e; }
+.button-primary:active { background-color: #0f0f1a; }
+
+.button-secondary { background-color: oklch(0.95 0.0058 264.53); color: #030213; }
+.button-secondary:hover { background-color: oklch(0.88 0 0); }
+.button-secondary:active { background-color: oklch(0.75 0 0); }
+
+.button-destructive { background-color: #d4183d; color: #fff; }
+.button-destructive:hover { background-color: #b2102f; }
+.button-destructive:active { background-color: #8c0b24; }

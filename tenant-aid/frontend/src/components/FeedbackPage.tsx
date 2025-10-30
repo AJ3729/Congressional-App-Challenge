@@ -5,6 +5,7 @@ import { Input } from "./ui/input.tsx";
 import { Textarea } from "./ui/textarea.tsx";
 import { Label } from "./ui/label.tsx";
 import { Card } from "./ui/card.tsx";
+import "../styles/Form.css";
 import {
   Select,
   SelectContent,
