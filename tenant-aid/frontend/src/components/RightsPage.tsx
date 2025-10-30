@@ -1,0 +1,222 @@
+import { useState } from "react";
+import { Search, ChevronDown, ChevronUp, Shield } from "lucide-react";
+import { Input } from "./ui/input.tsx";
+import { Card } from "./ui/card.tsx";
+import { Button } from "./ui/button.tsx";
+
+interface Right {
+  question: string;
+  answer: string;
+}
+
+const tenantRightsData: Record<string, string> = {
+  "What are my responsibilities as a tenant?": "You have to follow the rules and take care of your apartment. Don't damage things on purpose, and let your landlord in when they need to make repairs. You must also respond to legal notices like those about lead paint or window guards.",
+
+  "What are the responsibilities of my landlord?": "Your landlord must keep the building safe, clean, and in good condition. They have to provide heat, hot and cold water, lights, and security. They also have to register the property each year and follow city and state housing laws.",
+
+  "My landlord refuses to make repairs to my apartment. What can I do?": "First, contact your landlord or building manager and ask for repairs. If they ignore you, write a letter and keep a copy. If nothing happens, file a complaint with the city or take your landlord to Housing Court. You don't need a lawyer for this.",
+
+  "I have no heat or hot water in my apartment. What can I do?": "Call 311 or go online to report it. From October 1 to May 31, buildings must be heated to at least 68°F during the day and 62°F at night. Hot water must always be available at 120°F all year round.",
+
+  "There is paint peeling in my apartment and my child is under 6. How can I find out if there's lead-based paint and what is my landlord supposed to do?": "Tell your landlord about the peeling paint. If they don't fix it or work safely, call 311. You can also call 311 to learn how to test for lead and get information about preventing lead poisoning.",
+
+  "Can I request window guards from my landlord?": "Yes. You can ask in writing for window guards, even if no small children live there. The landlord must install them. Call 311 if they don't install them or if they are unsafe.",
+
+  "Am I entitled to have my apartment painted?": "Yes. Landlords must paint apartments in buildings with three or more units every three years, or as needed in smaller buildings.",
+
+  "What are the rules about living in basements and cellars?": "Basements and cellars can't be rented unless approved by the city. Cellars can never be lived in. Living in illegal basement or cellar apartments is unsafe and can lead to fines or eviction. Call 311 to report illegal units.",
+
+  "Can my landlord enter my apartment at any time?": "No. Your landlord can only come in for emergencies or with notice for repairs, services, or to show the apartment to buyers or new tenants.",
+
+  "My landlord has changed the locks on my apartment. Is my landlord allowed to change my locks?": "No, unless they have a court order. Changing your locks without giving you a key is illegal. Call the police or go to Housing Court if you're locked out. You can bring proof that you live there, like mail or a lease. If you change your own locks, you must give your landlord a key.",
+
+  "My landlord raised my rent. I think it's too high. What can I do?": "If your apartment is rent-controlled or stabilized, contact DHCR to check if the rent increase is legal. If it's not regulated, your landlord can raise rent as the lease allows or with proper notice. For public housing, rent increases are based on income rules.",
+
+  "Am I supposed to get my security deposit back?": "Yes. You should get your deposit back with interest if you didn't damage the apartment. If there's damage, your landlord must give you a list of what they're charging for within 14 days after you move out.",
+
+  "What should I do if my building owner is harassing me?": "Landlords can't scare or threaten tenants to make them leave. If you're being harassed, you can take them to Housing Court. If you can't afford a lawyer, free or low-cost help might be available.",
+
+  "Can a building owner discriminate against me?": "No. It's illegal for landlords to deny you housing because of your race, gender, religion, disability, family status, or income source. Everyone must be treated equally.",
+
+  "Can I have pets in my apartment?": "It depends on your lease. If your landlord doesn't allow pets and you keep one, they can evict you. Service animals are allowed, and some pets are illegal in NYC. Call 311 for pet rules.",
+
+  "How do I apply for NYCHA Public Housing?": "Apply online at selfserve.nycha.info from any device. If you don't have internet, visit a NYCHA Walk-in Center to use a kiosk. For help, call (718) 707-7771, Monday–Friday, 8 a.m.–5 p.m.",
+
+  "Do I need to submit documents with the NYCHA Public Housing application?": "No, you don't need to submit documents when you apply. NYCHA will check your info later during the Eligibility Interview. If you apply as a Victim of Domestic Violence, send your application first, then fill out the VDV form on selfserve.nycha.info or call (718) 707-7771.",
+
+  "How do I know if NYCHA got my application?": "Check your application status at selfserve.nycha.info. NYCHA will also mail you a letter within 30 days. If you don't get it, call (718) 707-7771.",
+
+  "How can I check the status of my application?": "You can check it anytime at selfserve.nycha.info.",
+
+  "Should I update my NYCHA application if something changes?": "Yes, update any changes like address, phone, income, or borough preference at selfserve.nycha.info.",
+
+  "Do I need to renew my application?": "Yes, renew it every two years at selfserve.nycha.info under 'Update/Renew My Case' to stay on the waitlist.",
+
+  "Can I apply for both Public Housing and Section 8?": "Yes, you can apply for both, but you can only receive one at a time. If you're selected for one, your priority on the other waitlist will go down.",
+
+  "Do I have to live in NYC to apply for Public Housing?": "No, but people who live or work in NYC get priority on the waitlist.",
+
+  "Do I have to be a U.S. citizen to apply for Public Housing?": "No, but at least one person in your household must be a U.S. citizen or have eligible immigration status like a Permanent Resident or Refugee.",
+
+  "Is there a minimum age to apply for public housing?": "Yes, you or your co-head must be at least 18 or legally emancipated.",
+
+  "Can I apply for Public Housing as a single person?": "Yes, single adults can apply.",
+
+  "How old do I need to be to live in a NYCHA senior development?": "You or your co-head must be at least 62, and all household members must also be 62 or older.",
+
+  "Can I pick a specific development on my NYCHA application?": "No, you can only choose up to two boroughs. NYCHA will assign a development based on your priority and apartment size.",
+
+  "Do I need income to apply for Public Housing?": "No, there's no minimum income required.",
+
+  "Is there a maximum income for Public Housing?": "Yes, there are income limits based on family size. You can see them on NYCHA's website.",
+
+  "What happens after I apply for Public Housing?": "You'll stay on the waitlist until chosen for an Eligibility Interview. The wait depends on your priority, family size, and available apartments.",
+
+  "If selected, how is my rent calculated?": "Your rent is about 30% of your household's yearly income, minus certain deductions.",
+
+  "What happens after I'm placed on a Certified Waitlist?": "If found eligible, NYCHA will notify you by mail. They'll run a background check on everyone 16 or older. If you pass, you'll get an apartment offer. If not, you'll receive a letter explaining next steps.",
+
+  "Does NYCHA have apartments for people with disabilities?": "Yes, NYCHA has accessible apartments for people with physical or medical needs.",
+
+  "Who is eligible for Public Housing?": "You qualify if you meet NYCHA's family definition, have at least one household member with legal status, are 18 or older, and meet income limits.",
+
+  "What are the income limits for Public Housing?": "Income limits depend on family size. For example: 1 person: $90,750, 2 people: $103,700, 3: $116,650, 4: $129,600, and it increases by about $10,000 per person.",
+
+  "Can my landlord refuse to renew my lease?": "Yes, if your lease is not rent-stabilized and has expired. But if it's rent-stabilized, you usually have the right to renew under the same terms.",
+
+  "Can my landlord raise rent after I file a complaint?": "No. Raising rent or threatening you for reporting violations is considered retaliation and is illegal.",
+
+  "What should I do if my building has construction that makes my apartment unsafe?": "Call 311 and report unsafe construction. The Department of Buildings can inspect and stop work if needed.",
+
+  "What rights do I have if my landlord is selling the building?": "You don't have to move just because of a sale. Your lease and tenant rights remain valid under the new owner.",
+
+  "How do I find out if my apartment is rent-controlled?": "Rent control only applies to apartments occupied continuously since 1971. You can contact DHCR to confirm.",
+
+  "Can my landlord make me move for renovations?": "Only if they have a legal permit and court approval. They must give you proper notice and may need to offer relocation assistance.",
+
+  "Can I install my own air conditioner?": "Usually yes, but check your lease. Landlords can charge a small monthly fee for window units because of electricity use.",
+
+  "What if my ceiling or walls start leaking?": "Tell your landlord immediately. They must fix the leak and any damage. If not, call 311.",
+
+  "Can I add a roommate to my lease?": "If you live in a private apartment, you can usually have one additional occupant, but you must notify your landlord in writing.",
+
+  "Can I change the locks myself?": "Yes, but you must give your landlord a key. They still have the right to enter for emergencies or repairs.",
+
+  "Do I need renter's insurance?": "It's not required, but it protects your belongings if there's a fire, flood, or theft.",
+
+  "Can my landlord charge application or credit check fees?": "Yes, but they can't charge more than $20 for an application fee, including the background check.",
+
+  "Can my landlord charge me for repairs I didn't cause?": "No. You only pay for damage caused by you or your guests. Landlords must fix normal wear and tear.",
+
+  "What can I do if there's mold or pests in my apartment?": "Report it to your landlord first. If they don't act quickly, call 311. The city can order them to clean and repair it safely.",
+
+  "What happens if I lose my job while living in Public Housing?": "Report the change in income to NYCHA right away. Your rent may be reduced based on your new income.",
+
+  "What happens if I earn more money while living in Public Housing?": "Your rent may increase since it's based on your household income. NYCHA will adjust it at your next review.",
+
+  "How long does it take to get a NYCHA apartment?": "It can take several years depending on availability, family size, and priority status.",
+
+  "Can I add a family member to my NYCHA lease?": "Yes, but you must request approval from NYCHA before they move in.",
+
+  "Can I transfer to another NYCHA apartment?": "You can request a transfer for reasons like overcrowding, health, or safety. NYCHA reviews requests and approves based on need.",
+
+  "What happens if I don't renew my NYCHA application?": "Your application will be removed from the waitlist, and you'll lose your place.",
+
+  "What should I do if my NYCHA apartment needs repairs?": "Submit a repair ticket online or call the NYCHA Customer Contact Center at (718) 707-7771."
+};
+
+const tenantRights: Right[] = Object.entries(tenantRightsData).map(([question, answer]) => ({
+  question,
+  answer,
+}));
+
+export function RightsPage() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const filteredRights = tenantRights.filter((right) => {
+    const matchesSearch =
+      right.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      right.answer.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesSearch;
+  });
+
+  return (
+    <div className="max-w-5xl mx-auto px-4 py-8">
+      <div className="mb-8">
+        <h1 className="text-4xl mb-4">Your Tenant Rights</h1>
+        <p className="text-gray-600">
+          Understanding your rights is the first step to protecting yourself as a
+          tenant. Below is a comprehensive guide to your legal protections and
+          common questions about tenant rights in NYC.
+        </p>
+      </div>
+
+      {/* Search */}
+      <div className="mb-6">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+          <Input
+            placeholder="Search questions and answers..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="pl-10"
+          />
+        </div>
+      </div>
+
+      {/* Rights List */}
+      <div className="space-y-3">
+        {filteredRights.length === 0 ? (
+          <Card className="p-12 text-center">
+            <Shield className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+            <p className="text-gray-600">
+              No questions found matching your search.
+            </p>
+          </Card>
+        ) : (
+          filteredRights.map((right, index) => {
+            const isExpanded = expandedIndex === index;
+            return (
+              <Card key={index} className="overflow-hidden">
+                <div
+                  className="p-5 cursor-pointer hover:bg-gray-50 transition-colors"
+                  onClick={() => setExpandedIndex(isExpanded ? null : index)}
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <h3 className="text-lg pr-4">{right.question}</h3>
+                    </div>
+                    <Button variant="ghost" size="sm" className="flex-shrink-0">
+                      {isExpanded ? (
+                        <ChevronUp className="w-5 h-5" />
+                      ) : (
+                        <ChevronDown className="w-5 h-5" />
+                      )}
+                    </Button>
+                  </div>
+                </div>
+
+                {isExpanded && (
+                  <div className="px-5 pb-5 pt-0 border-t bg-gray-50">
+                    <p className="text-gray-700 mt-4 leading-relaxed">{right.answer}</p>
+                  </div>
+                )}
+              </Card>
+            );
+          })
+        )}
+      </div>
+
+      {/* Footer Note */}
+      <div className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+        <p className="text-sm text-amber-900">
+          <strong>Important:</strong> This information is specific to New York City
+          tenant rights. For legal advice related to your specific situation, please
+          consult with a qualified attorney or contact a tenant advocacy organization.
+          For immediate help, call 311.
+        </p>
+      </div>
+    </div>
+  );
+}
